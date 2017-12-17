@@ -1,5 +1,44 @@
 {
   "expo": {
-    "sdkVersion": "23.0.0"
+    "name": "Recipe.Report",
+    "description": "The Recipe.Report mobile application, built using React-Native",
+    "slug": "recipereport",
+    "privacy": "unlisted",
+    "sdkVersion": "23.0.0",
+    "version": "0.0.1",
+    "githubUrl": "https://github.com/nothingworksright/recipereport_react",
+    "primaryColor": "#5bbad5",
+    "icon": "icons/icon_512.png",
+    "notification": {
+      "icon": "icons/icon_48_gs.png",
+      "color": "#5bbad5",
+      "androidMode": "default",
+      "androidCollapsedTitle": "#{unread_notifications} - Recipe.Report"
+    },
+    "loading": {
+      "icon": "icons/icon_512.png",
+      "exponentIconColor": "blue",
+      "exponentIconGrayscale": 1,
+      "backgroundColor": "#ffffff",
+      "hideExponentText": true
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#5bbad5"
+    },
+    "android": {
+      "package": "report.recipe.recipe.report",
+      "versionCode": 1,
+      "icon": "icons/icon_640.png",
+      "splash": {
+        "backgroundColor": "#ffffff",
+        "resizeMode": "contain",
+      }
+    },
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "resizeMode": "contain",
+      "image": "icons/icon_640.png"
+    }
   }
 }
