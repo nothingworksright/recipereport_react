@@ -1,22 +1,37 @@
 import React from 'react';
-import { Dimensions, Image, ScrollView, StyleSheet, View } from 'react-native';
-import { Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import {
+  Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  View
+} from 'react-native';
+import {
+  Button,
+  FormLabel,
+  FormInput,
+  FormValidationMessage
+} from 'react-native-elements'
 
 export default class App extends React.Component {
+  onLayout(e) {
+    const {width, height} = Dimensions.get('window')
+    console.log(width, height)
+  }
   render() {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <View style={{flex: 0.2, padding: 20}}></View>
+          <View style={styles.spacer} />
           <View style={styles.row}>
-            <View style={styles.box}>
+            <View style={styles.frame}>
               <Image
-                source={require('./icons/icon_512.png')}
+                source={require('./icons/icon_640.png')}
                 style={styles.logo}
               />
             </View>
           </View>
-          <View style={{flex: 0.2, padding: 20}}></View>
+          <View style={styles.spacer} />
           <View style={styles.row}>
             <View style={styles.form}>
               <FormLabel>Email Address</FormLabel>
@@ -25,13 +40,13 @@ export default class App extends React.Component {
               <FormInput />
               <Button
                 icon={{name: 'shield', size: 15, type: "octicon"}}
-                buttonStyle={{backgroundColor: 'skyblue', borderRadius: 10, marginTop: 20}}
+                buttonStyle={styles.button}
                 textStyle={{textAlign: 'center'}}
-                title={`SUBMIT`}
+                title={`LOGIN`}
               />
             </View>
           </View>
-          <View style={{flex: 0.2, padding: 20}}></View>
+          <View style={styles.spacer} />
         </View>
       </ScrollView>
     );
@@ -49,10 +64,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  spacer: {
+    flex: 0.2,
+    padding: 20,
+  },
   row: {
     flexDirection:'row',
   },
-  box: {
+  frame: {
     flex: 0.8,
     padding: 20,
     backgroundColor: '#eeeeee',
@@ -68,5 +87,10 @@ const styles = StyleSheet.create({
     flex: 0.8,
     padding: 20,
     backgroundColor: '#eeeeee',
+  },
+  button: {
+    backgroundColor: 'skyblue',
+    borderRadius: 10,
+    marginTop: 20,
   },
 });

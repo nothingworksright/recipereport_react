@@ -1,6 +1,7 @@
 {
   "name": "RecipeReport",
   "version": "0.0.1",
+  "license": "MIT",
   "private": false,
   "devDependencies": {
     "jest-expo": "23.0.0",
