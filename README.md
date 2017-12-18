@@ -1,4 +1,4 @@
-# Recipe.Report  
+# 🗃 Recipe.Report  
 
 The Recipe.Report mobile app, built using [React Native](https://facebook.github.io/react-native/).  
 
