@@ -1,17 +1,45 @@
 import React from 'react';
 import {
+  Button,
   Dimensions,
   Image,
   ScrollView,
   StyleSheet,
+  Text,
+  TextInput,
   View
 } from 'react-native';
 import {
-  Button,
-  FormLabel,
-  FormInput,
-  FormValidationMessage
-} from 'react-native-elements'
+  lightest,
+  verylight,
+  light,
+  mediumlight,
+  medium,
+  mediumdark,
+  dark,
+  darker,
+  verydark,
+  darkest
+} from './colorpalette'
+
+async function doLogin () {
+  try {
+    console.log('doing login now')
+    let res = await fetch('http://192.168.0.5:1138/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: 'yourValue',
+        password: 'yourOtherValue',
+      }),
+    })
+    console.log(res)
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export default class App extends React.Component {
   onLayout(e) {
@@ -23,26 +51,26 @@ export default class App extends React.Component {
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.spacer} />
-          <View style={styles.row}>
-            <View style={styles.frame}>
-              <Image
-                source={require('./icons/icon_640.png')}
-                style={styles.logo}
-              />
-            </View>
-          </View>
+          <Text style={styles.title}>🗃 Recipe.Report</Text>
           <View style={styles.spacer} />
           <View style={styles.row}>
             <View style={styles.form}>
-              <FormLabel>Email Address</FormLabel>
-              <FormInput />
-              <FormLabel>Password</FormLabel>
-              <FormInput />
+              <Text>Email Address</Text>
+              <TextInput
+                underlineColorAndroid='transparent'
+                style={styles.input}
+              />
+              <Text>Password</Text>
+              <TextInput
+                underlineColorAndroid='transparent'
+                style={styles.input}
+              />
+              <View style={styles.spacer} />
               <Button
-                icon={{name: 'shield', size: 15, type: "octicon"}}
-                buttonStyle={styles.button}
-                textStyle={{textAlign: 'center'}}
-                title={`LOGIN`}
+                onPress={doLogin}
+                title='LOGIN'
+                color='#607D8B'
+                accessibilityLabel="Login to Recipe.Report"
               />
             </View>
           </View>
@@ -60,7 +88,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -71,26 +98,30 @@ const styles = StyleSheet.create({
   row: {
     flexDirection:'row',
   },
-  frame: {
-    flex: 0.8,
-    padding: 20,
-    backgroundColor: '#eeeeee',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    width: width,
-    height: height * 0.2,
-    resizeMode: 'contain',
-  },
   form: {
     flex: 0.8,
     padding: 20,
-    backgroundColor: '#eeeeee',
+    backgroundColor: lightest,
+  },
+  title: {
+    flex: 0.8,
+    padding: 20,
+    fontFamily: 'sans-serif',
+    fontSize: 30,
+    color: darkest,
+    alignSelf: 'center',
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: 'lightgrey',
   },
   button: {
-    backgroundColor: 'skyblue',
+    backgroundColor: medium,
     borderRadius: 10,
     marginTop: 20,
+  },
+  buttontext: {
+    textAlign: 'center',
+    fontFamily: 'sans-serif',
   },
 });

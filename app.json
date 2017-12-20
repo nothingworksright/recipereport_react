@@ -6,11 +6,11 @@
     "privacy": "unlisted",
     "sdkVersion": "23.0.0",
     "version": "0.0.1",
-    "primaryColor": "#5bbad5",
+    "primaryColor": "#607D8B",
     "icon": "icons/icon_512.png",
     "notification": {
       "icon": "icons/icon_48_gs.png",
-      "color": "#5bbad5",
+      "color": "#607D8B",
       "androidMode": "default",
       "androidCollapsedTitle": "#{unread_notifications} - Recipe.Report"
     },
@@ -18,24 +18,24 @@
       "icon": "icons/icon_512.png",
       "exponentIconColor": "blue",
       "exponentIconGrayscale": 1,
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#ECEFF1",
       "hideExponentText": true
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#5bbad5"
+      "backgroundColor": "#607D8B"
     },
     "android": {
       "package": "report.recipe.recipe.report",
       "versionCode": 1,
       "icon": "icons/icon_640.png",
       "splash": {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#ECEFF1",
         "resizeMode": "contain",
       }
     },
     "splash": {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#ECEFF1",
       "resizeMode": "contain",
       "image": "icons/icon_640.png"
     }
