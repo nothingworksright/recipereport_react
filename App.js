@@ -1,7 +1,12 @@
+'use strict'
+
+/**
+ * 
+ */
+
 import React from 'react';
 import {
   Button,
-  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -22,30 +27,17 @@ import {
   darkest
 } from './colorpalette'
 
-async function doLogin () {
-  try {
-    console.log('doing login now')
-    let res = await fetch('http://192.168.0.5:1138/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: 'yourValue',
-        password: 'yourOtherValue',
-      }),
-    })
-    console.log(res)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 export default class App extends React.Component {
+  state = {
+    email: '',
+    password: '',
+  }
+
   onLayout(e) {
     const {width, height} = Dimensions.get('window')
     console.log(width, height)
   }
+
   render() {
     return (
       <ScrollView>
@@ -57,17 +49,22 @@ export default class App extends React.Component {
             <View style={styles.form}>
               <Text>Email Address</Text>
               <TextInput
+                value={this.state.email}
+                onChangeText={email => this.setState({email})}
                 underlineColorAndroid='transparent'
                 style={styles.input}
               />
               <Text>Password</Text>
               <TextInput
+                ref={ref => (this.passwordInput = ref)}
+                value={this.state.password}
+                onChangeText={password => this.setState({password})}
                 underlineColorAndroid='transparent'
                 style={styles.input}
               />
               <View style={styles.spacer} />
               <Button
-                onPress={doLogin}
+                onPress={this._doLogin}
                 title='LOGIN'
                 color='#607D8B'
                 accessibilityLabel="Login to Recipe.Report"
@@ -79,10 +76,28 @@ export default class App extends React.Component {
       </ScrollView>
     );
   }
-}
 
-var width = Dimensions.get("window").width;
-var height = Dimensions.get("window").height;
+  _doLogin = async () => {
+    try {
+      console.log('doing login now')
+      const { email, password } = this.state
+      let res = await fetch('http://192.168.0.5:1138/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+      let token = JSON.parse(res._bodyText).json.token
+      console.log(token)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
