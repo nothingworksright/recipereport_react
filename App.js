@@ -1,21 +1,23 @@
 'use strict'
 
 /**
- * 
+ * Recipe.Report mobile app, built using React Native
+ * @author {@link https://github.com/jmg1138 jmg1138}
  */
 
-import React from 'react';
+import React from 'react'
 import {
-  Button,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View
-} from 'react-native';
+} from 'react-native'
 import {
-  lightest,
+  Button,
+} from 'react-native-elements'
+import {
+  mostlight,
   verylight,
   light,
   mediumlight,
@@ -24,7 +26,7 @@ import {
   dark,
   darker,
   verydark,
-  darkest
+  mostdark
 } from './colorpalette'
 
 export default class App extends React.Component {
@@ -42,36 +44,35 @@ export default class App extends React.Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <View style={styles.spacer} />
           <Text style={styles.title}>🗃 Recipe.Report</Text>
-          <View style={styles.spacer} />
-          <View style={styles.row}>
-            <View style={styles.form}>
-              <Text>Email Address</Text>
-              <TextInput
-                value={this.state.email}
-                onChangeText={email => this.setState({email})}
-                underlineColorAndroid='transparent'
-                style={styles.input}
-              />
-              <Text>Password</Text>
-              <TextInput
-                ref={ref => (this.passwordInput = ref)}
-                value={this.state.password}
-                onChangeText={password => this.setState({password})}
-                underlineColorAndroid='transparent'
-                style={styles.input}
-              />
-              <View style={styles.spacer} />
-              <Button
-                onPress={this._doLogin}
-                title='LOGIN'
-                color='#607D8B'
-                accessibilityLabel="Login to Recipe.Report"
-              />
-            </View>
+          <Text style={styles.text}>Email Address</Text>
+          <TextInput
+            value={this.state.email}
+            onChangeText={email => this.setState({email})}
+            underlineColorAndroid='transparent'
+            style={styles.input}
+          />
+          <Text style={styles.text}>Password</Text>
+          <TextInput
+            ref={ref => (this.passwordInput = ref)}
+            value={this.state.password}
+            onChangeText={password => this.setState({password})}
+            underlineColorAndroid='transparent'
+            style={styles.input}
+          />
+          <Button
+            containerViewStyle={styles.buttonContainer}
+            buttonStyle={styles.button}
+            textStyle={styles.buttonText}
+            onPress={this._doLogin}
+            title='LOGIN'
+            color='#607D8B'
+            accessibilityLabel="Login to Recipe.Report"
+          />
+          <View style={styles.linkContainer}>
+            <Text style={styles.linkRegister}>Register</Text>
+            <Text style={styles.linkForgot}>Forgot Password?</Text>
           </View>
-          <View style={styles.spacer} />
         </View>
       </ScrollView>
     );
@@ -101,42 +102,77 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection:'column',
-    alignItems: 'center',
     justifyContent: 'center',
   },
-  spacer: {
-    flex: 0.2,
-    padding: 20,
-  },
-  row: {
-    flexDirection:'row',
-  },
-  form: {
-    flex: 0.8,
-    padding: 20,
-    backgroundColor: lightest,
-  },
   title: {
-    flex: 0.8,
-    padding: 20,
-    fontFamily: 'sans-serif',
-    fontSize: 30,
-    color: darkest,
+    margin: 10,
+    fontFamily: 'System',
+    fontSize: 40,
+    fontWeight: '900',
+    color: dark,
     alignSelf: 'center',
   },
+  text: {
+    flexDirection:'row',
+    flex: 0.8,
+    margin: 10,
+    marginBottom: 0,
+    fontFamily: 'System',
+    fontSize: 20,
+    fontWeight: '900',
+    color: dark,
+    alignSelf: 'flex-start',
+  },
   input: {
-    borderWidth: 2,
-    borderColor: 'lightgrey',
+    margin: 10,
+    padding: 10,
+    marginTop: 0,
+    fontFamily: 'System',
+    fontSize: 20,
+    color: dark,
+    alignSelf: 'stretch',
+    borderWidth: 1,
+    borderColor: mostdark
+  },
+  buttonContainer: {
+    width: '100%',
+    marginLeft: 0,
   },
   button: {
-    backgroundColor: medium,
-    borderRadius: 10,
+    margin: 10,
     marginTop: 20,
+    backgroundColor: verylight,
+    borderWidth: 1,
+    borderColor: mostdark
   },
-  buttontext: {
+  buttonText: {
     textAlign: 'center',
-    fontFamily: 'sans-serif',
+    fontFamily: 'System',
+    fontSize: 20,
+    fontWeight: '900',
+    color: dark,
+    alignSelf: 'stretch',
   },
+  linkContainer: {
+    flexDirection:'row',
+    flex: 0.8,
+  },
+  linkRegister: {
+    margin: 10,
+    fontFamily: 'System',
+    fontSize: 20,
+    fontWeight: '100',
+    color: 'blue',
+    alignSelf: 'flex-start',
+    textDecorationLine: 'underline',
+  },
+  linkForgot: {
+    margin: 10,
+    fontFamily: 'System',
+    fontSize: 20,
+    fontWeight: '100',
+    color: 'blue',
+    alignSelf: 'flex-end',
+    textDecorationLine: 'underline',
+  }
 });
